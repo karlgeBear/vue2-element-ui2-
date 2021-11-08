@@ -1,0 +1,119 @@
+[
+  {
+    "id": "1",
+    "user": "超级管理员",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pt3g1jj20b40b40t8.jpg",
+    "nickname": "信州义警",
+    "username": "admin",
+    "lastLoginTime": "2021-11-7 14:30:03",
+    "lastLoginIP": "1270.0.0.1"
+  },
+  {
+    "id": "12",
+    "user": "茅家岭中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167gy1g1p9vtj2chj20b40b4mxo.jpg",
+    "nickname": "茅家岭中队",
+    "username": "茅家岭中队",
+    "lastLoginTime": "2021-11-6 22:36:58",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "13",
+    "user": "车站中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "车站中队",
+    "username": "车站中队",
+    "lastLoginTime": "2021-11-5 10:45:36",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "14",
+    "user": "秦峰中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "秦峰中队",
+    "username": "秦峰中队",
+    "lastLoginTime": "2021-11-5 10:45:36",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "15",
+    "user": "朝阳中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "朝阳中队",
+    "username": "朝阳中队",
+    "lastLoginTime": "2021-11-7 00:00:03",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "26",
+    "user": "北门中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "北门中队",
+    "username": "北门中队",
+    "lastLoginTime": "2021-11-4 18:40:23",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "27",
+    "user": "林溪中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "灵溪中队",
+    "username": "灵溪中队",
+    "lastLoginTime": "2021-11-4 14:34:14",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "28",
+    "user": "石狮中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "石狮中队",
+    "username": "石狮中队",
+    "lastLoginTime": "2021-11-6 14:44:33",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "29",
+    "user": "东市中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "东市中队",
+    "username": "东市中队",
+    "lastLoginTime": "2021-11-4 18:40:23",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "30",
+    "user": "凤凰中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "凤凰中队",
+    "username": "凤凰中队",
+    "lastLoginTime": "2021-11-4 18:40:23",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "31",
+    "user": "沙湖中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "沙湖中队",
+    "username": "沙湖中队",
+    "lastLoginTime": "2021-11-4 18:40:23",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "32",
+    "user": "水南中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "水南中队",
+    "username": "水南中队",
+    "lastLoginTime": "2021-11-4 18:40:23",
+    "lastLoginIP": ""
+  },
+  {
+    "id": "33",
+    "user": "西市中队",
+    "avatar": "https://tva1.sinaimg.cn/large/9bd9b167ly1g1p9pgt9odj20b40b474l.jpg",
+    "nickname": "西市中队",
+    "username": "西市中队",
+    "lastLoginTime": "2021-11-4 18:40:23",
+    "lastLoginIP": ""
+  }
+]

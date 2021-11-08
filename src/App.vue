@@ -1,28 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <GuideSidenav></GuideSidenav>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import GuideSidenav from './components/GuideSidenav.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    GuideSidenav
+  },
+  computed:{
+    ...mapState(['userinfo'])
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang='stylus' rel='stylesheet/stylus'>
+  *
+    //font-family Simsun
+    font-family YaHei
+  body
+    padding-right: 0px !important
+    overflow hidden
+
 </style>
