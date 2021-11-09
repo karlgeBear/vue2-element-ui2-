@@ -4,6 +4,7 @@
 import Controller from '../pages/Controller.vue'
 import Admin from '../pages/Admin.vue'
 import User from '../pages/User.vue'
+import Adduser from '../pages/Adduser.vue'
 
 export default [
   {
@@ -12,14 +13,18 @@ export default [
     component:Controller
   },
   {
-    name:'admin',
     path:'/admin',
-    component:Admin
+    component:Admin,
   },
   {
     name:'user',
     path:'/user',
     component:User
+  },
+  {
+    name:'adduser',
+    path:'/adduser',
+    component: Adduser
   },
   {
     path:'/',

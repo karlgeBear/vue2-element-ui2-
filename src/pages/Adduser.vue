@@ -1,21 +1,20 @@
 <template>
   <div class="box">
-    <router-link to="/admin/adduser">带我飞向Admin</router-link>
-    <h1>User</h1>
-    <router-view></router-view>
+    Adduser
   </div>
 </template>
 
 <script type='text/ecmascript-6'>
-import { mapState } from 'vuex'
 export default {
   data () {
     return {}
-  }
+  },
 }
 
 </script>
 <style scoped lang='stylus' rel='stylesheet/stylus'>
   .box
-    margin 115px 15px
+    margin 115px 0 0 15px
+    background-color #fff
+    height 100%
 </style>

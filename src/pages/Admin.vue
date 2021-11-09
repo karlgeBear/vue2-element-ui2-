@@ -1,127 +1,131 @@
 <template>
   <div class="box">
     <div class="title">管理员列表</div>
-    <div class="select">
-      <div class="s_user_name">
-        <label for="user_name">用户名：</label>
-        <el-input v-model="name" placeholder="用户名|昵称" id="user_name"></el-input>
-      </div>      
-      <div class="s_user">
-        <label for="user">角色：</label>
-        <el-select v-model="user" placeholder="请选择">
-          <el-option
-            v-for="item in getOptions"
-            :key="item.user"
-            :label="item.label"
-            :value="item.user">
-          </el-option>
-        </el-select> 
-        <el-button type="danger" icon="el-icon-refresh" size="small" @click="reset">重置</el-button>
-        <el-button type="primary" icon="el-icon-search" size="small" @click="search">搜索</el-button>
+    <div class="table_box">
+      <div class="select">
+        <div class="s_user_name">
+          <label for="user_name">用户名：</label>
+          <el-input v-model="name" placeholder="用户名|昵称" id="user_name"></el-input>
+        </div>      
+        <div class="s_user">
+          <label for="user">角色：</label>
+          <el-select v-model="user" placeholder="请选择">
+            <el-option
+              v-for="item in getOptions"
+              :key="item.user"
+              :label="item.label"
+              :value="item.user">
+            </el-option>
+          </el-select> 
+          <el-button type="danger" icon="el-icon-refresh" size="small" @click="reset">重置</el-button>
+          <el-button type="primary" icon="el-icon-search" size="small" @click="search">搜索</el-button>
+        </div>
       </div>
-    </div>
-    <div class="admin_table_box">
-      <div class="ctr_add_del">
-        <el-button type="primary" icon="el-icon-plus" size="mini">添加</el-button>
-        <el-button type="danger" icon="el-icon-delete" size="mini" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-      </div>
-      <el-table
-        border
-        ref="multipleTable"
-        :data="tableData"
-        tooltip-effect="dark"
-        style="width: 100%;font-size:13px;color:black"
-        :header-cell-style="{color:'black',backgroundColor:'#f5f5f5'}"
-        @selection-change="handleSelectionChange">
-        <el-table-column
-          type="selection"
-          width="55">
-        </el-table-column>
-        <el-table-column
-          prop="id"
-          label="ID"
-          width="80"
-          >    <!-- renderHeader：添加icon（会有warning） -->
-          <template slot="header">   <!-- 自定义tableHeader -->
-            <span>ID</span>
-            <i class="el-icon-caret-top" style="font-size:12px;position:absolute;top:2px"></i>
-            <i class="el-icon-caret-bottom" style="font-size:12px;position:absolute;bottom:2px"></i>
-          </template>
-        </el-table-column>
-        <el-table-column
-          prop="user"
-          label="角色"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="avatar"
-          label="头像"
-          width="60">
-          <template slot-scope="scope">
-            <img :src="scope.row.avatar" alt="head" style="width:36px;height:36px;border-radius:50%">
-          </template>
-        </el-table-column>
-        <el-table-column
-          prop="nickname"
-          label="昵称"
-          width="90">
-        </el-table-column>
-        <el-table-column
-          prop="username"
-          label="用户名"
-          width="270">
-        </el-table-column>
-        <el-table-column
-          prop="lastLoginTime"
-          label="最后登录时间"
-          width="150"
-          >
-          <template slot="header">   <!-- 自定义tableHeader -->
-            <span>最后登录时间</span>
-            <i class="el-icon-caret-top" style="font-size:12px;position:absolute;top:2px"></i>
-            <i class="el-icon-caret-bottom" style="font-size:12px;position:absolute;bottom:2px"></i>
-          </template>
-          <!-- <template slot-scope="scope">{{scope.row.lastLoginTime}}</template>  自定义tableHeader下的内容(不写也照样生效：prop已经传值) -->
-        </el-table-column>
-        <el-table-column
-          prop="lastLoginIP"
-          label="最后登录IP"
-          width="120">
-          <!-- <template slot-scope="scope">{{ scope.row.lastLoginIP }}</template> -->
-        </el-table-column>
-        <el-table-column
-          prop="status"
-          width="130"
-          label="状态"
-        >             <!-- show-overflow-tooltip：让table表格随手动拉伸自适应长度 -->
-        <template slot-scope="scope">
-          <button style="backgroundColor:#409EFF;border:1px solid #ebeef5;border-right:none;height:28px;color:#fff">启用</button>
-          <button style="backgroundColor:#FFF;border:1px solid #ebeef5;border-left:none;height:28px;color:#ebeef5;vertical-align:top"><i class="el-icon-check"></i></button>
-        </template>
-        </el-table-column>
+      <div class="admin_table_box">
+        <div class="ctr_add_del">
+          <el-button type="primary" icon="el-icon-plus" size="mini" >添加</el-button>
+          <el-button type="danger" icon="el-icon-delete" size="mini" @click="handleDelete(idlis)">删除</el-button>
+        </div>
+        <el-table
+          border
+          ref="multipleTable"
+          :data="userlis"
+          tooltip-effect="dark"
+          style="width: 100%;font-size:13px;color:black"
+          :header-cell-style="{color:'black',backgroundColor:'#f5f5f5'}"
+          @selection-change="handleSelectionChange">
           <el-table-column
-            width="170"
-            label="操作"
-          >
+            type="selection"
+            width="55">
+          </el-table-column>
+          <el-table-column
+            prop="id"
+            label="ID"
+            width="80"
+            >    <!-- renderHeader：添加icon（会有warning） -->
+            <template slot="header">   <!-- 自定义tableHeader -->
+              <span>ID</span>
+              <i class="el-icon-caret-top" style="font-size:12px;position:absolute;top:2px"></i>
+              <i class="el-icon-caret-bottom" style="font-size:12px;position:absolute;bottom:2px"></i>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="user"
+            label="角色"
+            width="120">
+          </el-table-column>
+          <el-table-column
+            prop="avatar"
+            label="头像"
+            width="60">
+            <template slot-scope="scope">
+              <img :src="scope.row.avatar" alt="head" style="width:36px;height:36px;border-radius:50%">
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="nickname"
+            label="昵称"
+            width="90">
+          </el-table-column>
+          <el-table-column
+            prop="username"
+            label="用户名"
+            width="270">
+          </el-table-column>
+          <el-table-column
+            prop="lastLoginTime"
+            label="最后登录时间"
+            width="150"
+            >
+            <template slot="header">   <!-- 自定义tableHeader -->
+              <span>最后登录时间</span>
+              <i class="el-icon-caret-top" style="font-size:12px;position:absolute;top:2px"></i>
+              <i class="el-icon-caret-bottom" style="font-size:12px;position:absolute;bottom:2px"></i>
+            </template>
+            <!-- <template slot-scope="scope">{{scope.row.lastLoginTime}}</template>  自定义tableHeader下的内容(不写也照样生效：prop已经传值) -->
+          </el-table-column>
+          <el-table-column
+            prop="lastLoginIP"
+            label="最后登录IP"
+            width="120">
+            <!-- <template slot-scope="scope">{{ scope.row.lastLoginIP }}</template> -->
+          </el-table-column>
+          <el-table-column
+            width="130"
+            label="状态"
+          >             <!-- show-overflow-tooltip：让table表格随手动拉伸自适应长度 -->
           <template slot-scope="scope">
-　　　　　　  <el-button type="primary" size="mini" class="el-icon-edit" @click="handleEdit(scope.row.id,scope.row,scope.$index)">修改</el-button>
-　　　　　　  <el-button type="danger" size="mini" class="el-icon-delete" @click="handleUser(scope.row.id,scope.row,scope.$index)">删除</el-button>
-　　　　  </template>
-        </el-table-column>
-      </el-table>
+            <span v-if="scope.row.id == 1" style="backgroundColor:#F56C6C">禁止操作</span>
+            <button v-if="scope.row.id != 1" style="backgroundColor:#409EFF;border:1px solid #ebeef5;border-right:none;height:28px;color:#fff">启用</button>
+            <button v-if="scope.row.id != 1" style="backgroundColor:#FFF;border:1px solid #ebeef5;border-left:none;height:28px;color:#ebeef5;vertical-align:top"><i class="el-icon-check"></i></button>
+          </template>
+          </el-table-column>
+            <el-table-column
+              width="170"
+              label="操作"
+            >
+            <template slot-scope="scope">
+  　　　　　　  <el-button type="primary" size="mini" class="el-icon-edit" @click="handleEdit(scope.row.id,scope.row,scope.$index)">修改</el-button>
+  　　　　　　  <el-button type="danger" size="mini" class="el-icon-delete" @click="handleDelete([scope.row.id])">删除</el-button>
+  　　　　  </template>
+          </el-table-column>
+        </el-table>
+      </div>
+      <div class="footer_page">
+        <button>首页</button>
+        <button>上一页</button>
+        <button>1</button>
+        <button>下一页</button>
+        <button>尾页</button>
+        <span>共13条/页</span>
+      </div>
     </div>
-    <div class="footer_page">
-      <button>首页</button>
-      <button>上一页</button>
-      <button>1</button>
-      <button>下一页</button>
-      <button>尾页</button>
-      <span>共13条/页</span>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script type='text/ecmascript-6'>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -135,34 +139,39 @@ export default {
       // }],
       name:'',
       user: '',
-      //表格row数据
-      tableData: this.$store.state.userinfo
+      idlis:[]
     }
   },
   methods:{
     // 选项操作
     handleSelectionChange(val) {
       this.multipleSelection = val;
+      console.log('val',val)
+      this.idlis =  val.map((user) => {
+        return user.id
+      })
+
+      console.log('this.idlis:',this.idlis)
     },
     // render 事件,给表头添加icon
-    renderHeader (h,{column}) {
-      console.log('h:',h,'column:',column)
-      return h(
-        'div',
-        [ 
-          h('span', column.label),
-          h('i', {
-            class:"el-icon-caret-top",
-            style: "font-size:12px;position:absolute;top:2px"
-          }),
-          h('i', {
-            class:"el-icon-caret-bottom",
-            style: "font-size:12px;position:absolute;bottom:2px"
-            //slot: "reference"
-          })
-        ],
-      )
-    },
+    // renderHeader (h,{column}) {
+    //   console.log('h:',h,'column:',column)
+    //   return h(
+    //     'div',
+    //     [ 
+    //       h('span', column.label),
+    //       h('i', {
+    //         class:"el-icon-caret-top",
+    //         style: "font-size:12px;position:absolute;top:2px"
+    //       }),
+    //       h('i', {
+    //         class:"el-icon-caret-bottom",
+    //         style: "font-size:12px;position:absolute;bottom:2px"
+    //         //slot: "reference"
+    //       })
+    //     ],
+    //   )
+    // },
     // 清空input的值
     reset(){
      this.name = ""
@@ -174,37 +183,37 @@ export default {
        alert("请输入和选择角色")
        return
       }
-     const result = this.tableData.filter((user) => {
+     const result = this.userlis.filter((user) => {
        return (user["username"] === this.name || user["nickname"] ===this.name) && user["user"] === this.user
      })
      if (result.length === 0){
        alert('未匹配到相应的角色')
        return
      }
-     this.tableData = result
-     console.log("result",result,this.name === "admin")
     },
     // 修改对应的行
     handleEdit(dataID, curRow,rowIndex) {
       console.log(dataID, curRow,rowIndex)
     },
     //点击删除对应的行
-    handleDelete(dataID, curRow,rowIndex) {
-      console.log(dataID, curRow,rowIndex)
+    handleDelete(idlis) {
+      console.log('当前点击用户idlis值',idlis)
+      this.$store.dispatch('delete',idlis)
     }
   },
   computed:{
+    ...mapState(['userlis']),
     getOptions(){
-      //return this.tableData[0].user
       const options = []
-      this.tableData.forEach(user => {
+      this.userlis.forEach(user => {
         options.push({"user":user.user,"label":user.user})
       })
       return options
-    }
+    },
   },
   mounted(){
-    console.log('this.getOptions:',this.getOptions)
+    //console.log('this.getOptions:',this.getOptions)
+    //this.$store.dispatch('delete',id)
   }
 }
 

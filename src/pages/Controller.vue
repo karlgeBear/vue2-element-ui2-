@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="welcome">您好：admin，欢迎使用网站后台管理系统。今天是：2021-11-6</div>
+    <div class="welcome">您好：admin，欢迎使用网站后台管理系统。今天是：{{getTime}}</div>
     <div class="artical">
       <div class="artical_box">
         <div class="head">
@@ -59,6 +59,14 @@ export default {
   },
   components:{
       BrokenLine
+  },
+  computed:{
+    getTime(){
+      const date = new Date()
+      return date.getFullYear() +'-'+ (date.getMonth()+1) +'-'+ date.getDate()
+
+    }
+    
   }
 }
 
