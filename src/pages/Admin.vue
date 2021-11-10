@@ -23,7 +23,7 @@
       </div>
       <div class="admin_table_box">
         <div class="ctr_add_del">
-          <el-button type="primary" icon="el-icon-plus" size="mini" >添加</el-button>
+          <el-button type="primary" icon="el-icon-plus" size="mini" @click="$router.push('/adduser')">添加</el-button>
           <el-button type="danger" icon="el-icon-delete" size="mini" @click="handleDelete(idlis)">删除</el-button>
         </div>
         <el-table
