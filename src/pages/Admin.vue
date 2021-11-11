@@ -127,6 +127,7 @@
 <script type='text/ecmascript-6'>
 import { mapState } from 'vuex'
 export default {
+  name:"Admin",
   data () {
     return {
       // user下选框数据

@@ -54,6 +54,7 @@
 <script type='text/ecmascript-6'>
 import BrokenLine from '@/components/echarts/BrokenLine'
 export default {
+  name:"Controller",
   data () {
     return {}
   },

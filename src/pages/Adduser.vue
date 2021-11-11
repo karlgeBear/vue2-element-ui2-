@@ -1,85 +1,133 @@
 <template>
   <div class="add_box">
     <div class="title">管理员添加</div>
-    <el-form
-      :model="addUserForm"
-      ref="addUserForm"
-      label-width="150px"
-      class="demo-ruleForm"
-    >
-      <el-form-item label="所属角色" prop="admin" :rules="[{required: true, message: '所属角色不能为空', trigger: 'blur'}]">
-        <el-input type="text" autocomplete="off" value="超级管理员"></el-input>
-      </el-form-item>
-      <el-form-item label="昵称" prop="nickname" :rules="[{required: true, message: '昵称不能为空'},{type:'string',message: '昵称必须是个字符串'}]">
-        <el-input type="text" autocomplete="off" v-model.string="addUserForm.nickname" placeholder="请输入昵称"></el-input>
-      </el-form-item>
-
-      <el-form-item label="头像" prop="avatar" :rules="[{required: true}]">
-        <input type="file" name="" id="" ref="imgName" @change="getImgName">
-        <img src="" alt="">
-        <i class="el-icon-picture"></i>
-      </el-form-item>
-
-      <el-form-item label="用户名" prop="username" :rules="[{required: true, message: '用户名不能为空'},{type:'string',message: '用户名必须是个字符串'}]">
-        <el-input type="text" autocomplete="off" v-model.string="addUserForm.username" placeholder="请输入用户名"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="password" :rules="[{required: true, message:'密码不能为空'},{type:'number',message: '密码必须为数字'}]">
-        <el-input type="password" autocomplete="off" v-model.number="addUserForm.password" placeholder="请输入密码"></el-input>
-      </el-form-item>
-      <el-form-item label="状态" prop="status" :rules="[{required: true,message:''}]">
-        <el-radio checked :label="1" >启用</el-radio>
-        <el-radio :label="2">备用</el-radio>
-      </el-form-item>
-      <el-form-item label="年龄" prop="age"
-        :rules="[
-          { required: true, message: '年龄不能为空' },
-          { type: 'number', message: '年龄必须为数字值' },
-        ]"
-      >
-        <el-input type="age" v-model.number="addUserForm.age" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('addUserForm')"
-          >提交</el-button
-        >
-        <el-button @click="$router.back()">返回</el-button>
-      </el-form-item>
-    </el-form>
+    <form>
+      <div class="input_box">
+        <label for="belongToUser">所属角色</label>
+        <div class="inner_input">
+          <input name="belongToUser" id="belongToUser" value="超级管理员" readonly="readonly">
+        </div>
+      </div>
+      <div class="input_box">
+        <label for="nickname">昵称</label>
+        <div class="inner_input">
+          <input name="nickname" id="nickname" 
+          placeholder="请输入昵称" autocomplete="off"
+          v-model="nickname" >
+        </div>
+      </div>
+      <div class="input_box">
+        <label for="avatar">头像</label>
+        <div class="inner_input" style="border:none">
+          <input type="file" name="avatar" id="avatar" 
+          autocomplete="off"
+          ref="imgName"
+          @change="getImgName">
+        </div>
+      </div>
+      <div class="input_box">
+        <label for="username">用户名</label>
+        <div class="inner_input">
+          <input type="text" name="username" id="username"
+          placeholder="请输入用户名" autocomplete="off"
+          v-model="username" >
+        </div>
+      </div>
+      <div class="input_box">
+        <label for="password">密码</label>
+        <div class="inner_input">
+          <input type="password" name="password" id="password" 
+          placeholder="请输入密码" autocomplete="off"
+          v-model="password" >
+        </div>
+      </div>
+      <div class="input_box">
+        <label for="status">状态</label>
+        <div class="radio_box">
+          <input type="radio" name="status" checked>
+          <span></span>启用</span>
+        </div>
+        <div class="radio_box">
+          <input type="radio" name="status">
+          <span>禁用</span>
+        </div>
+      </div>
+      <div class="button_box">
+        <el-button type="primary" @click="submitForm">提交</el-button>
+        <el-button type="primary" @click="$router.back()">返回</el-button>
+      </div>
+      <el-alert :title="errmessage" v-show="isShow" type="error"></el-alert>
+    </form>
   </div>
+
 </template>
 
 <script type='text/ecmascript-6'>
+import {mapState} from 'vuex'
 export default {
+  name:"addUser",
   data() {
     return {
-      addUserForm: {
-        age: '',
-      },
-      radio: '1'
+      nickname:"",
+      imgName:"",
+      username:"",
+      password:"",
+      errmessage:"",
+      isShow:false
     }
   },
+  computed:{
+    ...mapState(['userlis']),
+  },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-    },
+    submitForm() {
+      // 判断提交数据是否正确
+      if (!this.nickname) {
+        this.errmessage = "请输入昵称"
+        this.isShow = true
+        console.log(Boolean(this.username))
+        return
+      }else if (!this.imgName) {
+        this.errmessage = "请上传头像"
+        return
+      }else if (!this.username) {
+        this.errmessage = "请输入用户名"
+        return
+      }else if(!this.password){
+        this.errmessage = "请输入密码"
+        return
+      }
 
-    /* 先等会。未实现 */
-    // 获取文件名，保存到本地，放在img的src？显示图片，
-    //【el-upload，没有后台处理图片】 【搭建express后台？操作文件save？】  
+
+      let time = new Date()  //"2021-11-5 10:45:36"
+      // 当前addUser的时间
+      const curCreateTime = `${time.getFullYear() +'-'}${time.getMonth()+1+'-'}${time.getDate() +' '}${time.getHours() +':'}${time.getMinutes() +':'}${time.getSeconds()}`
+      // 获取最大的id值+1
+      const userId = this.userlis.reduce((pre,cur) => {
+        return pre.id > cur.id ? pre.id : cur.id
+      })
+      console.log(userId)
+      console.log(curCreateTime)
+      console.log(this.userlis)
+      
+      let newUser = {
+        "id": parseInt(userId)+1,
+        "user": this.username,
+        "avatar": "http://api.btstu.cn/sjtx/api.php?lx=c1&format=images",
+        "nickname": this.nickname,
+        "username": this.username,
+        "lastLoginTime": curCreateTime,
+        "lastLoginIP": ""
+      }
+
+      this.$store.dispatch('create',newUser)
+      this.$router.back()
+    },
     getImgName(){
       let imgName = this.$refs.imgName.value.split("\\")
       let len = imgName.length
       console.log(imgName[len-1])
+      this.imgName = imgName[len-1]
     }
   }
 }
@@ -94,15 +142,45 @@ export default {
     line-height 39px
     text-indent 16px
     border-bottom 1px solid #DCDFE6
-    margin-bottom 20px
+    margin-bottom 10px
   form 
     padding-bottom 15px
-    .avatar-uploader-icon 
-      border 1px solid #DCDFE6
-      font-size 40px
-      color #8c939d
-      height: 80px
-      width 80px
-      line-height 80px
-      text-align center
+    .input_box
+      margin-bottom 20px
+      label
+        display inline-block
+        width 120px
+        height 32px 
+        line-height 32px
+        text-align right
+        margin-right 18px
+        &::before
+          content '*'
+          color #f56c6c
+          margin-right 4px
+      .inner_input
+        display inline-block
+        border 1px solid #DCDFE6
+        height 32px
+        width 88%
+        input
+          height 32px
+          width 100%
+          text-indent 10px
+          &:focus
+            outline-color #2b85e4
+      .radio_box
+        display inline-block
+        margin-left 10px
+        input
+          width 22px
+          height 22px
+          vertical-align middle
+          margin-right 5px
+    .button_box
+      margin-left 138px
+    .el-alert
+      margin-top 15px
+      justify-content center
+
 </style>

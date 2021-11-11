@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Col,Row,Icon,Menu,Submenu,MenuItem,MenuItemGroup,Input,Button,Select,Option,Table,TableColumn,ButtonGroup,Form,FormItem,Upload,Radio } from 'element-ui'
+import { Col,Row,Icon,Menu,Submenu,MenuItem,MenuItemGroup,Input,Button,Select,Option,Table,TableColumn,ButtonGroup,Form,FormItem,Upload,Radio,Alert } from 'element-ui'
 //import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
 import router from './router'
@@ -23,6 +23,7 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Upload)
 Vue.use(Radio)
+Vue.use(Alert)
 Vue.config.productionTip = false
 
 new Vue({

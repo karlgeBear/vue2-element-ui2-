@@ -14,14 +14,18 @@ export default new Vuex.Store({
     }
   },
   actions:{
-    create({commit},value){
-      commit('update',value)
+    create({state},newUser){
+      state.userlis.push(newUser)
     },
     delete({commit,state},idlis){
-      let newUserlis =  state.userlis.filter((user) => {
+      console.log('islis:',idlis.indexOf("1")===0)
+      // 不可删除admin
+      idlis.indexOf("1")===0 ? idlis.splice(idlis.indexOf("1"),1) : islis
+      // 获取一个新的userlis
+      let newUserlis = state.userlis.filter((user) => {
         return idlis.indexOf(user['id']) < 0
       })
-      console.log('sdel',idlis)
+      // 更新用户数据
       commit('update',newUserlis)
     },
     modify({commit},value){

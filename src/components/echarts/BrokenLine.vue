@@ -10,7 +10,7 @@
 <script type='text/ecmascript-6'>
 import* as echarts from 'echarts'
 export default {
-  name: '',
+  name: 'BrokenLine',
   data() {
     return {
       charts: '',
