@@ -2,6 +2,7 @@ const path = require('path')
 
 module.exports = {
   lintOnSave: false, // 关闭Eslint规则
+  publicPath:"./",
   
   configureWebpack: { // 内部写webpack原生配置
     resolve: {

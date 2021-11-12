@@ -195,6 +195,7 @@ export default {
     // 修改对应的行
     handleEdit(dataID, curRow,rowIndex) {
       console.log(dataID, curRow,rowIndex)
+      alert('角色界面组件做了该功能，该组件还未写(没有此需求界面)')
     },
     //点击删除对应的行
     handleDelete(idlis) {

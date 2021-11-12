@@ -5,7 +5,7 @@
       <div class="input_box">
         <label for="username">角色名</label>
         <div class="inner_input">
-          <input type="text" name="username" id="username" v-model="curUser.username" readonly="readonly" >
+          <input type="text" name="username" id="username" v-model="curUser.username">
         </div>
       </div>
       <div class="radio_box">
