@@ -26,6 +26,9 @@ Vue.use(Radio)
 Vue.use(Alert)
 Vue.config.productionTip = false
 
+// 全局事件bus
+Vue.prototype.$bus = new Vue()
+
 new Vue({
   render: h => h(App),
   router,

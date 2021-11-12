@@ -85,6 +85,7 @@ export default {
     .artical
       height 173px
       display flex
+      background-color #f5f5f5
       .artical_box
         width 302px
         height 148px

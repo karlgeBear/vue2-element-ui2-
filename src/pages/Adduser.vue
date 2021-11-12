@@ -89,12 +89,15 @@ export default {
         return
       }else if (!this.imgName) {
         this.errmessage = "请上传头像"
+        this.isShow = true
         return
       }else if (!this.username) {
         this.errmessage = "请输入用户名"
+        this.isShow = true
         return
       }else if(!this.password){
         this.errmessage = "请输入密码"
+        this.isShow = true
         return
       }
 

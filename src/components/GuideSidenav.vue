@@ -13,7 +13,7 @@
             >
             <li class="logo_and_name">
               <div class="name_box">
-                <span class="logo"><img src="" alt=""></span>
+                <span><img class="logo" src="../common/images//police.webp" alt=""></span>
                 <span class="msite_name">信州义警</span></br>
                 <span class="msite_ename">XINZHOU VIGILANTES</span>
               </div>
@@ -168,7 +168,7 @@ export default {
     height 100vh
     background-color #545c64
     position fixed
-    overflow auto
+    overflow hidden
     .el-menu
       height auto
       background-color: inherit
@@ -191,6 +191,7 @@ export default {
           border-radius 50% 
           float left
           margin-right 3px
+          
         .msite_name
           font-size 22px
           letter-spacing 11px

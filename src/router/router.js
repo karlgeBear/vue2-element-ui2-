@@ -5,6 +5,7 @@ import Controller from '../pages/Controller.vue'
 import Admin from '../pages/Admin.vue'
 import User from '../pages/User.vue'
 import Adduser from '../pages/Adduser.vue'
+import UserEdit from '../pages/UserEdit.vue'
 
 export default [
   {
@@ -25,6 +26,11 @@ export default [
     name:'adduser',
     path:'/adduser',
     component: Adduser
+  },
+  {
+    name:'useredit',
+    path: '/useredit',
+    component:UserEdit
   },
   {
     path:'/',

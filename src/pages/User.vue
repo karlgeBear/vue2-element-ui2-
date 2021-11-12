@@ -80,7 +80,8 @@ export default {
     return {
       name:'',
       user: '',
-      idlis:[]
+      idlis:[],
+      curUser:{}
     }
   },
   methods:{
@@ -94,27 +95,10 @@ export default {
 
       console.log('this.idlis:',this.idlis)
     },
-    // render 事件,给表头添加icon
-    // renderHeader (h,{column}) {
-    //   console.log('h:',h,'column:',column)
-    //   return h(
-    //     'div',
-    //     [ 
-    //       h('span', column.label),
-    //       h('i', {
-    //         class:"el-icon-caret-top",
-    //         style: "font-size:12px;position:absolute;top:2px"
-    //       }),
-    //       h('i', {
-    //         class:"el-icon-caret-bottom",
-    //         style: "font-size:12px;position:absolute;bottom:2px"
-    //         //slot: "reference"
-    //       })
-    //     ],
-    //   )
-    // },
     // 修改对应的行
     handleEdit(dataID, curRow,rowIndex) {
+      this.curUser = curRow
+      this.$router.push('/useredit')
       console.log(dataID, curRow,rowIndex)
     },
     //点击删除对应的行
@@ -136,7 +120,10 @@ export default {
   mounted(){
     //console.log('this.getOptions:',this.getOptions)
     //this.$store.dispatch('delete',id)
-  }
+  },
+  destroyed(){
+  this.$bus.$emit('userEidt',this.curUser)
+}
 }
 
 </script>

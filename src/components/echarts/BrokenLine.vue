@@ -22,6 +22,11 @@ export default {
     drawLine(id) {
       console.log(echarts)
       this.charts = echarts.init(document.getElementById(id))
+      const time = new Date()
+      let year = time.getFullYear()
+      let month = time.getMonth() + 1
+      let date = time.getDate()
+      console.log('month:',month+1)
       this.charts.setOption({
         title:{
           text: '近七天文章发布统计',
@@ -42,7 +47,7 @@ export default {
         xAxis: { //x轴
           type: 'category',
           boundaryGap: false,
-          data: ["2021-11-1","2021-11-2","2021-11-3","2021-11-4","2021-11-5","2021-11-6","2021-11-7"]
+          data: [`${year}-${month}-${date-6}`,`${year}-${month}-${date-5}`,`${year}-${month}-${date-4}`,`${year}-${month}-${date-3}`,`${year}-${month}-${date-2}`,`${year}-${month}-${date-1}`,`${year}-${month}-${date-0}`]
         },
         yAxis: {  // y轴
           type: 'value'
