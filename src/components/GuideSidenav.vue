@@ -9,6 +9,7 @@
             class="el-menu-vertical-demo"
             @open="handleOpen"
             @close="handleClose"
+            @select="handSelect"
             text-color="#fff"
             >
             <li class="logo_and_name">
@@ -153,6 +154,9 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    handSelect(key,keyPath){
+      console.log('handSelect',key,keyPath)
     }
   }
 }
